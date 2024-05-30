@@ -1,0 +1,196 @@
+
+
+.login-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: bisque;
+   
+    
+   
+  }
+  
+    .logo {
+      height: 7rem; /* ou o tamanho que você desejar */
+      width: 12rem; /* isso manterá a proporção da imagem */
+      border-radius: 33px;
+      
+    }
+  .form {
+    --input-focus: #2d8cf0;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: #fff;
+    --main-color: #323232;
+    padding: 20px;
+    background-image: linear-gradient(to bottom, #a52a2a, #5a2a2a) !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+    border-radius: 20px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    height: 30rem;
+    width: 30rem;
+    
+  }
+  
+  .title {
+    color: rgb(254, 229, 229);
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .title span {
+    color: var(--font-color-sub);
+    font-weight: 600;
+    font-size: 17px;
+  }
+  
+  .input {
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--font-color);
+    padding: 5px 10px;
+    outline: none;
+    
+  }
+  
+  .input + .input {
+    margin-top: 1rem; /* Ajuste o espaçamento entre os inputs conforme necessário */
+  }
+  .input::placeholder {
+    color: var(--font-color-sub);
+    opacity: 0.8;
+  }
+  
+  .input:focus {
+    border: 2px solid var(--input-focus);
+  }
+  
+  .login-with {
+    display: flex;
+    gap: 20px;
+  }
+  .botoes {
+    display: flex;
+    flex-direction: column;
+  
+  }
+  .button-log {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    color: var(--font-color);
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--main-color);
+  }
+  
+  .button-log:active, .button-confirm:active,.button-register:active {
+    box-shadow: 0px 0px var(--main-color);
+    transform: translate(3px, 3px);
+  }
+  
+  .button-confirm {
+    margin: 15px auto; /* Diminui o espaçamento superior e centraliza os botões */
+    width: 180px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--font-color);
+    cursor: pointer;
+    /* Remover a margem esquerda que foi aplicada anteriormente */
+  }
+  
+  .button-back{
+    margin:  auto; /* Diminui o espaçamento superior e centraliza os botões */
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--font-color);
+    cursor: pointer;
+  }
+
+
+.custom-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  ;
+  
+  transition: visibility 0s, opacity 0.3s;
+  
+}
+
+.custom-dialog.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dialog-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-dialog h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Cor de fundo semi-transparente */
+  z-index: 999; /* Deve ser maior do que o z-index do diálogo */
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s;
+}
+
+.overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
