@@ -1,23 +1,20 @@
 <div class="body-background">
-    <div class="login-page">
-  
-      <form class="form">
-        <div class="title"> LOGIN :  </div>
-  
-        <input type="username" placeholder="username" name="username" class="input">
-        <input type="password"  placeholder="Password" name="password" class="input">
-        <div class="login-with">
-          <div class="botoes">
-            <button class="button-confirm" >Entrar →</button>
-            <button routerLink="/register" class="button-register">Registrar</button>
-          </div>
+  <div class="login-page">
+
+    <form class="form">
+      <div class="title"> LOGIN :  </div>
+
+      <input type="text" placeholder="email" name="email" class="input" [(ngModel)]="email">
+      <input type="password" placeholder="Password" name="password" class="input" [(ngModel)]="password">
+      <div class="login-with">
+        <div class="botoes">
+          <button class="button-confirm" (click)="onLogin()">Entrar →</button>
+          <button routerLink="/register" class="button-register">Registrar</button>
         </div>
-        
-        
-      </form>
-    
-    
-       
       </div>
-  </div>
+      <div *ngIf="loginError" class="error-message">{{ loginError }}</div>
+      
+    </form>
   
+    </div>
+</div>

@@ -8,14 +8,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username: string = '';
+  email: string = '';
   password: string = '';
-  loginError : string ='';
+  loginError: string = '';
   
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   onLogin() {
-   
+    this.authService.login(this.email, this.password).subscribe(
+      (response) => {
       
+        this.router.navigate(['/admin']);
+      },
+      (error) => {
+      
+        this.loginError = error.error.message;
+        console.log(this.loginError)
+      }
+    );
   }
+  
 }

@@ -7,18 +7,29 @@ import { LoginComponent } from './pages/login/login.component';
 import { TableModule } from 'primeng/table';
 import { AdminComponent } from './pages/admin/admin.component';
 import { ButtonModule } from 'primeng/button';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './pages/register/register.component';
+import { DialogModule } from 'primeng/dialog';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    RegisterComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
+    FormsModule,
+    HttpClientModule,
+    DialogModule
+
+
+
   
    
   ],
