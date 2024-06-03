@@ -6,13 +6,6 @@
   background-color: var(--background);
 }
 
-.logo {
-  height: 7rem; /* ou o tamanho que você desejar */
-  width: 12rem; /* isso manterá a proporção da imagem */
-  border-radius: 33px;
-
-}
-
 .form {
   padding: 1.5rem;
   background: var(--surface);

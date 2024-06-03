@@ -1,17 +1,16 @@
 <div class="body-background">
   <div class="login-page">
     <form class="form">
-      <div class="title">Registrar :</div>
+      <div class="title">Registrar:</div>
       <input type="email" placeholder="Email" name="email" class="input" [(ngModel)]="email">
-      <input type="text" placeholder="name" name="name" class="input" [(ngModel)]="name">
+      <input type="text" placeholder="Nome" name="name" class="input" [(ngModel)]="name">
       <input type="password" placeholder="Senha" name="password" class="input" [(ngModel)]="password">
       <div class="login-with">
-        <div class="botoes">
-          <button type="button" class="button-confirm" (click)="onRegister()">Confirmar</button>
-          <button type="button" routerLink="/" class="button-back">Voltar</button>
+        <div class="buttons">
+          <button pButton pRipple type="button" class="p-button-success" (click)="onRegister()">Confirmar</button>
+          <button pButton pRipple type="button" routerLink="/" class="p-button-secondary">Voltar</button>
         </div>
       </div>
     </form>
-    <div class="overlay" [class.active]="visible"></div>
   </div>
 </div>
