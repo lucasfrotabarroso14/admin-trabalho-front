@@ -11,13 +11,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { DialogModule } from 'primeng/dialog';
+import {LandingComponent} from "./pages/landing/landing.component";
+import {NgOptimizedImage} from "@angular/common";
+import {Ripple} from "primeng/ripple";
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AdminComponent,
     RegisterComponent,
-    
+    LandingComponent
   ],
   imports: [
     BrowserModule,
@@ -26,12 +29,9 @@ import { DialogModule } from 'primeng/dialog';
     ButtonModule,
     FormsModule,
     HttpClientModule,
-    DialogModule
-
-
-
-  
-   
+    DialogModule,
+    NgOptimizedImage,
+    Ripple
   ],
   providers: [],
   bootstrap: [AppComponent]
