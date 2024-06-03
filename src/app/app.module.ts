@@ -14,6 +14,8 @@ import { DialogModule } from 'primeng/dialog';
 import {LandingComponent} from "./pages/landing/landing.component";
 import {NgOptimizedImage} from "@angular/common";
 import {Ripple} from "primeng/ripple";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastModule} from "primeng/toast";
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +26,7 @@ import {Ripple} from "primeng/ripple";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     TableModule,
     ButtonModule,
@@ -31,7 +34,8 @@ import {Ripple} from "primeng/ripple";
     HttpClientModule,
     DialogModule,
     NgOptimizedImage,
-    Ripple
+    Ripple,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,9 +19,7 @@ export class RegisterComponent {
   onRegister() {
     this.authService.register(this.name, this.email, this.password).subscribe(
       (response) => {
-        setTimeout(() => {
-          this.router.navigate(['/login']);
-        }, 3000);
+        this.router.navigate(['/login']);
       },
       (error) => {
         this.registerError = error.error.message;

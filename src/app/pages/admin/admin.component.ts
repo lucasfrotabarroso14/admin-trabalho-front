@@ -1,23 +1,31 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../login/auth.service';
+import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../login/auth.service';
+import {Router} from "@angular/router";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
+  providers: [MessageService]
 })
 export class AdminComponent implements OnInit {
   users: any[] = [];
-  editingUser: any = null;
+  isEditing: boolean = false;
+  editingUser: any = {
+    name: '',
+    email: '',
+  };
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService, private location: Router, private messageService: MessageService) {}
 
   ngOnInit(): void {
-    this.getUsers(); 
+    this.getUsers();
   }
 
   editarUsuario(usuario: any) {
+    this.isEditing = true;
     this.editingUser = { ...usuario }; // Copia os dados do usuário para edição
   }
 
@@ -25,19 +33,17 @@ export class AdminComponent implements OnInit {
     this.http.put<any>(`http://localhost:8000/users/${this.editingUser.id}`, this.editingUser)
       .subscribe(
         (response) => {
-          console.log('Usuário editado:', response);
-          alert("Usuário editado com sucesso");
-          this.editingUser = null; // Limpa os dados do usuário em edição
-          this.getUsers(); // Atualiza a lista de usuários
+          this.messageService.add({
+            summary: "Usuário editado com sucesso",
+            severity: "success"
+          })
+          this.isEditing = false
+          this.getUsers()
         },
         (error) => {
           console.error('Erro ao editar usuário:', error);
         }
       );
-  }
-
-  cancelarEdicao() {
-    this.editingUser = null; // Limpa os dados do usuário em edição
   }
 
   getUsers() {
@@ -56,8 +62,10 @@ export class AdminComponent implements OnInit {
   excluirUsuario(usuario: any) {
     this.authService.deleteUser(usuario.id).subscribe(
       (response) => {
-        console.log('Usuário excluído:', response);
-        alert("Usuario removido com sucesso")
+        this.messageService.add({
+          summary: "Usuário excluído com sucesso",
+          severity: "info"
+        })
         this.getUsers(); // Atualiza a lista de usuários após a exclusão
       },
       (error) => {

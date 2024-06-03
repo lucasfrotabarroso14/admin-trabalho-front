@@ -1,42 +1,44 @@
+<p-toast />
 <div class="card">
-    <p-table [value]="users" [tableStyle]="{ 'min-width': '50rem' }">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Ações</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-user>
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td>
-                <td>
-                    <button pButton type="button" icon="pi pi-pencil" (click)="editarUsuario(user)" class="p-button-secondary"></button>
-                   
-                    <button pButton type="button" icon="pi pi-trash" (click)="excluirUsuario(user)" class="p-button-danger"></button>
-                </td>
-                
-            </tr>
-        </ng-template>
-    </p-table>
+  <p-table [value]="users" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td class="buttons">
+          <button pButton type="button" icon="pi pi-pencil" (click)="editarUsuario(user)"
+                  class="p-button-secondary"></button>
+          <button pButton type="button" icon="pi pi-trash" (click)="excluirUsuario(user)"
+                  class="p-button-danger"></button>
+        </td>
+
+      </tr>
+    </ng-template>
+  </p-table>
 </div>
 
-<div *ngIf="editingUser" class="modal">
-    <div class="modal-content">
-        <span class="close" (click)="cancelarEdicao()">&times;</span>
-        <h2>Editar Usuário</h2>
-        <form>
-            <label for="edit-name">Nome:</label>
-            <input id="edit-name" type="text" [(ngModel)]="editingUser.name" name="name" required>
+<p-dialog header="Editar usuário" class="modal" [modal]="true" [(visible)]="isEditing"
+          [style]="{ padding: '1rem', backgroundColor: 'var(--surface)', width: '40vw' }">
+  <form>
+    <div>
+      <label for="edit-name">Nome:</label>
+      <input id="edit-name" type="text" [(ngModel)]="editingUser.name" name="name" required>
 
-            <label for="edit-email">Email:</label>
-            <input id="edit-email" type="email" [(ngModel)]="editingUser.email" name="email" required>
+      <label for="edit-email">Email:</label>
+      <input id="edit-email" type="email" [(ngModel)]="editingUser.email" name="email" required>
 
-            <button type="button" (click)="salvarEdicao()">Salvar</button>
-        </form>
+      <button pButton pRipple type="button" (click)="salvarEdicao()" class="p-button-success">Salvar</button>
     </div>
-</div>
+
+  </form>
+</p-dialog>
 
