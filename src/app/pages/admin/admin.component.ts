@@ -41,7 +41,10 @@ export class AdminComponent implements OnInit {
           this.getUsers()
         },
         (error) => {
-          console.error('Erro ao editar usuário:', error);
+          this.messageService.add({
+            summary: 'Erro ao editar usuário: ' + error,
+            severity: "error"
+          })
         }
       );
   }
@@ -51,10 +54,12 @@ export class AdminComponent implements OnInit {
       .subscribe(
         (response) => {
           this.users = response;
-          console.log(this.users);
         },
         (error) => {
-          console.error('Erro ao buscar usuários:', error);
+          this.messageService.add({
+            summary: 'Erro ao buscar usuários:' + error,
+            severity: "error"
+          })
         }
       );
   }
@@ -69,7 +74,10 @@ export class AdminComponent implements OnInit {
         this.getUsers(); // Atualiza a lista de usuários após a exclusão
       },
       (error) => {
-        console.error('Erro ao excluir usuário:', error);
+        this.messageService.add({
+          summary: 'Erro ao excluir usuário:' + error,
+          severity: "error"
+        })
       }
     );
   }
