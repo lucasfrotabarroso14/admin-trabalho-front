@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
   }
 
   salvarEdicao() {
-    this.http.put<any>(`http://localhost:8000/users/${this.editingUser.id}`, this.editingUser)
+    this.http.put<any>(`http://arturbruno17.pythonanywhere.com/users/${this.editingUser.id}`, this.editingUser)
       .subscribe(
         (response) => {
           this.messageService.add({
@@ -50,7 +50,7 @@ export class AdminComponent implements OnInit {
   }
 
   getUsers() {
-    this.http.get<any[]>('http://localhost:8000/users')
+    this.http.get<any[]>('http://arturbruno17.pythonanywhere.com/users')
       .subscribe(
         (response) => {
           this.users = response;

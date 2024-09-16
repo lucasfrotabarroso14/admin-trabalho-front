@@ -6,7 +6,7 @@ import {Observable, tap} from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8000';
+  private apiUrl = 'http://arturbruno17.pythonanywhere.com';
   static TOKEN_KEY = 'token';
 
   constructor(private http: HttpClient) {
